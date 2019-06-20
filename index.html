@@ -1,68 +1,30 @@
 <!DOCTYPE html>
-<html ng-app>
+<html lang="en" ng-app="myApp" ng-controller="mainCtrl">
 
 <head>
+    <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <!-- ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="CSS/main.css">
 </head>
 
 <body class="container">
-    <!-- Heading for will -->
-    <div class="willHeading">
-        <h4>Please select the option that best describes your status below</h4>
-        <p>STEP {{step}} OF 5</p>
-    </div>
-    <!-- Progress bar -->
-    <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: {{progress}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-    <div ng-init="step = 1; progress = 0" class="questionBox">
-        <div ng-show="step == 1">
-            <input type="text" placeholder="First Name" ng-model="newWill.name">
-            <br>
-            <input type="text" placeholder="Family Name" ng-model="newWill.familyName">
-            <br>
-            <input type="text" placeholder="Current Residency" ng-model="newWill.residency">
-            <br>
-            <input type="text" placeholder="Nationality" ng-model="newWill.nationality">
-            <br>
-            
-        </div>
-        <div ng-show="step == 2">
-            <label>
-                <input type="radio" placeholder="Martial Status" ng-model="newWill.maritialStatus" value="yes">
-                <span>Single</span>
-            </label>
-            <label class="btn btn-outline-danger">
-                <input type="radio"  placeholder="Martial Status" ng-model="newWill.maritialStatus" 
-                value="no">
-                <span>Married</span>
-            </label>
-            <input type="number" placeholder="Age" ng-model="newWill.Age">
-            <input type="text" placeholder="" ng-model="newWill.name">
-            <input type="text" placeholder="" ng-model="newWill.name">
-        </div>
-        <div ng-show="step == 3">
-            <input type="text" placeholder="" ng-model="">
-            <input type="text" placeholder="" ng-model="newWill.name">
-            <input type="text" placeholder="" ng-model="newWill.name">
-        </div>
-        <!-- PROGRESS BUTTONS -->
-        <!-- STEP 1 -->
-        <button ng-show="step == 1 && newWill.name && newWill.residency && newWill.nationality" ng-click="step = 2; progress = progress + 25">Next</button>
-        <!-- STEP 2 -->
-        <button ng-show="step == 2" ng-click="step = 1">Previous</button>
-        <button ng-show="step == 2" ng-click="step = 3; progress = progress + 25">Next</button>
-        <!-- STEP 3 -->
-        <button ng-show="step == 3" ng-click="step = 2">Previous</button>
-        <button ng-show="step == 3" ng-click="step = 4; progress = progress + 25">Next</button>
-        <!-- STEP 4 -->
-        <button ng-show="step == 4" ng-click="step = 3">Previous</button>
-        <button ng-show="step == 4" ng-click="step = 5; progress = progress + 25">Next</button>
-        <!-- STEP 5 -->
-        <button ng-show="step == 5" ng-click="step = 4">Previous</button>
+        <div ng-view></div>
+
+        <!-- SCRIPT -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-        <script type="text/javascript" src="start.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min.js"></script>
+        <!-- ANGULAR FIRE -->
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/mainCtrl.js"></script>
+        <script type="text/javascript" src="js/start.js"></script>
     </div>
 </body>
 
