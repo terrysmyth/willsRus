@@ -1,13 +1,103 @@
-<!DOCTYPE html>
-<html ng-app>
-
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="main.css">
-</head>
-<body>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-<script type="text/javascript" src="start.js"></script>
+<!-- Heading for will -->
+<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+<div class="container willBox">
+    <div class="willHeading">
+        <h4>Please select the option that best describes your status below</h4>
+        <p>STEP {{step}} OF 5</p>
+    </div>
+    <div ng-init="step = 3; progress = 0" class="questionBox">
+        <div ng-show="step == 1" class="step1">
+            <h3>General Info</h3>
+            <div class="group">
+                <input type="text" ng-model="newWill.name">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="sLabel">Name</label>
+            </div>
+            <br>
+            <div class="group">
+                <input type="text" ng-model="newWill.familyName">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="sLabel">Family Name</label>
+            </div>
+            <br>
+            <div class="group">
+                <input type="text" ng-model="newWill.residency">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="sLabel">Residency</label>
+            </div>
+            <br>
+            <div class="group">
+                <input type="text" ng-model="newWill.nationality">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="sLabel">Nationality</label>
+            </div>
+            <br>
+        </div>
+        <div ng-show="step == 2" class="questionBox">
+            <label>Maritial Status: </label>
+            <label class="btn btn-outline-danger">
+                <input type="radio" placeholder="Martial Status" ng-model="newWill.maritialStatus" value="yes" name="maritialStatus">
+                <span>Single</span>
+            </label>
+            <label class="btn btn-outline-danger">
+                <input type="radio" placeholder="Martial Status" ng-model="newWill.maritialStatus" value="no" name="maritialStatus">
+                <span>Married</span>
+            </label>
+            <input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio" checked>
+            <label for="toggle-on" class="btn">No</label>
+            <input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio">
+            <label for="toggle-off" class="btn">Yes</label>
+            <input type="number" placeholder="Age" ng-model="newWill.Age">
+            <input type="text" placeholder="" ng-model="newWill.name">
+            <input type="text" placeholder="" ng-model="newWill.name">
+        </div>
+        <div ng-show="step == 3" class="questionBox">
+            <div class="inlined">
+                <h3>Children and Dependencies</h3>
+                <div ng-repeat="child in children" class="childItem">
+                    <!-- <label>NAME</label> -->
+                    <div>
+                        <input type="text" name="" ng-model="child.name" placeholder="NAME">
+                        <span class="highlight"></span>
+                        <span class="bar" style="width: 150px"></span>
+                    </div>
+                    <!-- <label>AGE</label> -->
+                    <div>
+                        <input type="date" name="" ng-model="child.age" placeholder="AGE">
+                        <span class="highlight"></span>
+                        <span class="bar" style="width: 160px"></span>
+                    </div>
+                    <!-- <label>NATIONALITY</label> -->
+                    <div>
+                        <input type="text" name="" ng-model="child.nationality" placeholder="NATIONALITY">
+                        <span class="highlight"></span>
+                        <span class="bar" style="width: 150px"></span>
+                    </div>
+                    <i class="material-icons removeChildBtn" ng-click="removeChild($index)">remove_circle</i>
+                </div>
+                <div class="addChildBtn" ng-click="addChild()"><i class="material-icons">add_circle</i>Add Child</div>
+            </div>
+        </div>
+    </div>
 </div>
-</body>
+<div class="progressButtons">
+    <!-- PROGRESS BUTTONS -->
+    <!-- STEP 1 -->
+    <!-- ng-show="step == 1 && newWill.name && newWill.residency && newWill.nationality" ng-click="step = 2; progress = progress + 25" -->
+    <button ng-show="step == 1" ng-click="step = 2">GO TO STEP {{step+1}} </button>
+    <!-- STEP 2 -->
+    <button ng-show="step == 2" ng-click="step = 1">Previous</button>
+    <button ng-show="step == 2" ng-click="step = 3"> GO TO STEP {{step+1}} </button>
+    <!-- STEP 3 -->
+    <button ng-show="step == 3" ng-click="step = 2">Previous</button>
+    <button ng-show="step == 3" ng-click="step = 4"> GO TO STEP {{step+1}} </button>
+    <!-- STEP 4 -->
+    <button ng-show="step == 4" ng-click="step = 3">Previous</button>
+    <button ng-show="step == 4" ng-click="step = 5"> GO TO STEP {{step+1}} </button>
+    <!-- STEP 5 -->
+    <button ng-show="step == 5" ng-click="step = 4">Previous</button>
+</div>
