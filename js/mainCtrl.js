@@ -22,10 +22,19 @@
 
          }
 
+         $scope.showWarning = function(i) {
+            console.log(i)
 
+            let getUa = document.getElementById(i);
+
+            if (getUa.style.display == "block") {
+                getUa.style.display = "none";
+            } else {
+                getUa.style.display = "block";
+            }
+         }
+
+        
 
 
      })
- const magic = () => {
-     console.log($scope.child.age);
- }
