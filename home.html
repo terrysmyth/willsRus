@@ -5,7 +5,7 @@
         <h4>Please select the option that best describes your status below</h4>
         <p>STEP {{step}} OF 5</p>
     </div>
-    <div ng-init="step = 3; progress = 0" class="questionBox">
+    <div ng-init="step = 2; progress = 0" class="questionBox">
         <div ng-show="step == 1" class="step1">
             <h3>General Info</h3>
             <div class="group">
@@ -38,27 +38,41 @@
             <br>
         </div>
         <div ng-show="step == 2" class="questionBox">
-            <label>Maritial Status: </label>
-            <label class="btn btn-outline-danger">
-                <input type="radio" placeholder="Martial Status" ng-model="newWill.maritialStatus" value="yes" name="maritialStatus">
-                <span>Single</span>
-            </label>
-            <label class="btn btn-outline-danger">
-                <input type="radio" placeholder="Martial Status" ng-model="newWill.maritialStatus" value="no" name="maritialStatus">
-                <span>Married</span>
-            </label>
-            <input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio" checked>
-            <label for="toggle-on" class="btn">No</label>
-            <input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio">
-            <label for="toggle-off" class="btn">Yes</label>
-            <input type="number" placeholder="Age" ng-model="newWill.Age">
-            <input type="text" placeholder="" ng-model="newWill.name">
-            <input type="text" placeholder="" ng-model="newWill.name">
+            <div class="inlined" ng-init="spouse = false">
+                <div class="spouseHeading">
+                    <h3>Partnerships</h3>
+                    <p>I don't have any.</p>
+                </div>
+                <div class="spouseBody" ng-show="spouse">
+                    <!-- <label>NAME</label> -->
+                    <div>
+                        <input type="text" name="" ng-model="spouse.name" placeholder="NAME">
+                        <span class="highlight"></span>
+                        <span class="bar" style="width: 150px"></span>
+                    </div>
+                    <!-- <label>AGE</label> -->
+                    <div class="spouseAge">
+                        <input type="number" ng-model="spouse.age" min="1" max="100" placeholder="AGE" required />
+                        <span class="highlight"></span>
+                        <span class="bar" style="width: 70px"></span>
+                    </div>
+                    <!-- <label>NATIONALITY</label> -->
+                    <div>
+                        <input type="text" name="" ng-model="spouse.nationality" placeholder="NATIONALITY">
+                        <span class="highlight"></span>
+                        <span class="bar" style="width: 150px"></span>
+                    </div>
+                    <i class="material-icons removeChildBtn" ng-click="spouse = false">remove_circle</i>
+                </div>
+                    
+
+                <div class="addChildBtn" ng-click="spouse = true" ng-show="!spouse"><i class="material-icons">add_circle</i>Add Spouse</div>
+            </div>
         </div>
         <div ng-show="step == 3" class="questionBox">
             <div class="inlined">
                 <h3>Children and Dependencies</h3>
-                <div ng-repeat="child in children" class="childItem">
+                <div ng-repeat="child in children" class="childItem" ng-init="child.age = ''">
                     <!-- <label>NAME</label> -->
                     <div>
                         <input type="text" name="" ng-model="child.name" placeholder="NAME">
@@ -66,10 +80,18 @@
                         <span class="bar" style="width: 150px"></span>
                     </div>
                     <!-- <label>AGE</label> -->
-                    <div>
-                        <input type="date" name="" ng-model="child.age" placeholder="AGE">
+                    <div class="childAge">
+                        <input type="number" ng-model="child.age" min="1" max="100" placeholder="AGE" required />
                         <span class="highlight"></span>
-                        <span class="bar" style="width: 160px"></span>
+                        <span class="bar" style="width: 70px"></span>
+                    </div>
+                    <div class="childUnderage">
+                        <i class="material-icons childInfo" ng-show="child.age < 18" ng-click="showThing('ua'+$index)">live_help</i>
+                        <div class="underage" id="ua{{$index}}">
+                            <h4>Child under 18?</h4>
+                            <p>Tight pants next level keffiyeh you probably haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american appare. For more info, click <a href="#">here</a>.</p>
+                            <a href="#"></a>
+                        </div>
                     </div>
                     <!-- <label>NATIONALITY</label> -->
                     <div>
