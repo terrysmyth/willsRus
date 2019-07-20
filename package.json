@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/terrysmyth/willsRus/issues"
   },
-  "homepage": "https://github.com/terrysmyth/willsRus#readme"
+  "homepage": "https://github.com/terrysmyth/willsRus#readme",
+  "dependencies": {
+    "heroku": "^7.26.2"
+  }
 }
