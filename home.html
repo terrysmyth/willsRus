@@ -1,108 +1,288 @@
 <!-- Heading for will -->
-<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 <div class="container willBox">
-    <div class="willHeading">
-        <h4>Please select the option that best describes your status below</h4>
-        <p>STEP {{step}} OF 5</p>
+    <div class="getWill" ng-show="step == 0">
+        <h2>No Will Yet?</h2>
+        <p>Click on the button below to start the process of creating your own will! If you are logged in the document will persist, allowing you to come back and access the will any time.</p>
+        <button ng-click="step = 1">Make Will</button>
+        <p ng-show="profile.will">It seems like you have a Will already, which is fine! However if you make another one it will overwrite your previous one.</p>
     </div>
-    <div ng-init="step = 2; progress = 0" class="questionBox">
-        <div ng-show="step == 1" class="step1">
+    <div class="willHeading" ng-show="step != 0;">
+        <h4>Please fill in the options below to the best of your ability.</h4>
+        <p>STEP {{step}} OF 3</p>
+    </div>
+    <div ng-init="step = 0; progress = 0" class="questionBox step1" ng-show="step == 1">
+        <div class="titleHolder">
             <h3>General Info</h3>
-            <div class="group">
-                <input type="text" ng-model="newWill.name">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label class="sLabel">Name</label>
-            </div>
-            <br>
-            <div class="group">
-                <input type="text" ng-model="newWill.familyName">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label class="sLabel">Family Name</label>
-            </div>
-            <br>
-            <div class="group">
-                <input type="text" ng-model="newWill.residency">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label class="sLabel">Residency</label>
-            </div>
-            <br>
-            <div class="group">
-                <input type="text" ng-model="newWill.nationality">
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label class="sLabel">Nationality</label>
-            </div>
-            <br>
+            <p>Just some general information about you.</p>
         </div>
-        <div ng-show="step == 2" class="questionBox">
-            <div class="inlined" ng-init="spouse = false">
-                <div class="spouseHeading">
-                    <h3>Partnerships</h3>
-                    <p>I don't have any.</p>
-                </div>
-                <div class="spouseBody" ng-show="spouse">
-                    <!-- <label>NAME</label> -->
-                    <div>
-                        <input type="text" name="" ng-model="spouse.name" placeholder="NAME">
-                        <span class="highlight"></span>
-                        <span class="bar" style="width: 150px"></span>
-                    </div>
-                    <!-- <label>AGE</label> -->
-                    <div class="spouseAge">
-                        <input type="number" ng-model="spouse.age" min="1" max="100" placeholder="AGE" required />
-                        <span class="highlight"></span>
-                        <span class="bar" style="width: 70px"></span>
-                    </div>
-                    <!-- <label>NATIONALITY</label> -->
-                    <div>
-                        <input type="text" name="" ng-model="spouse.nationality" placeholder="NATIONALITY">
-                        <span class="highlight"></span>
-                        <span class="bar" style="width: 150px"></span>
-                    </div>
-                    <i class="material-icons removeChildBtn" ng-click="spouse = false">remove_circle</i>
-                </div>
-                    
-
-                <div class="addChildBtn" ng-click="spouse = true" ng-show="!spouse"><i class="material-icons">add_circle</i>Add Spouse</div>
+        <!-- dsfsdf -->
+        <div class="personalBody spouseBody">
+            <div>
+                <input type="text" name="" ng-model="newWill.firstName" placeholder="Given Name">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
+            </div>
+            <div>
+                <input type="text" name="" ng-model="newWill.familyName" placeholder="Family Name">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
+            </div>
+            <div class="spouseAge">
+                <input type="number" ng-model="newWill.age" min="1" max="100" placeholder="AGE" required />
+                <span class="highlight"></span>
+                <span class="bar" style="width: 70px"></span>
+            </div>
+            <div>
+                <input type="text" name="" ng-model="newWill.nationality" placeholder="NATIONALITY">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
+            </div>
+            <div>
+                <input type="text" name="" ng-model="newWill.country" placeholder="RESIDENCY">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
             </div>
         </div>
-        <div ng-show="step == 3" class="questionBox">
-            <div class="inlined">
-                <h3>Children and Dependencies</h3>
-                <div ng-repeat="child in children" class="childItem" ng-init="child.age = ''">
-                    <!-- <label>NAME</label> -->
-                    <div>
-                        <input type="text" name="" ng-model="child.name" placeholder="NAME">
-                        <span class="highlight"></span>
-                        <span class="bar" style="width: 150px"></span>
-                    </div>
-                    <!-- <label>AGE</label> -->
-                    <div class="childAge">
-                        <input type="number" ng-model="child.age" min="1" max="100" placeholder="AGE" required />
-                        <span class="highlight"></span>
-                        <span class="bar" style="width: 70px"></span>
-                    </div>
-                    <div class="childUnderage">
-                        <i class="material-icons childInfo" ng-show="child.age < 18" ng-click="showThing('ua'+$index)">live_help</i>
-                        <div class="underage" id="ua{{$index}}">
-                            <h4>Child under 18?</h4>
-                            <p>Tight pants next level keffiyeh you probably haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american appare. For more info, click <a href="#">here</a>.</p>
-                            <a href="#"></a>
-                        </div>
-                    </div>
-                    <!-- <label>NATIONALITY</label> -->
-                    <div>
-                        <input type="text" name="" ng-model="child.nationality" placeholder="NATIONALITY">
-                        <span class="highlight"></span>
-                        <span class="bar" style="width: 150px"></span>
-                    </div>
-                    <i class="material-icons removeChildBtn" ng-click="removeChild($index)">remove_circle</i>
-                </div>
-                <div class="addChildBtn" ng-click="addChild()"><i class="material-icons">add_circle</i>Add Child</div>
+        <div class="titleHolder">
+            <h3>Executor</h3>
+            <p>Who will be the person that will execute your will?</p>
+        </div>
+        <div class="spouseBody">
+            <div>
+                <input type="text" name="" ng-model="newWill.executor.firstName" placeholder="Given Name">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
             </div>
+            <div>
+                <input type="text" name="" ng-model="newWill.executor.familyName" placeholder="Family Name">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
+            </div>
+            <div class="spouseAge">
+                <input type="number" ng-model="newWill.executor.age" min="1" max="100" placeholder="AGE" required />
+                <span class="highlight"></span>
+                <span class="bar" style="width: 70px"></span>
+            </div>
+            <div>
+                <input type="text" name="" ng-model="newWill.executor.nationality" placeholder="NATIONALITY">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
+            </div>
+            <div>
+                <input type="text" name="" ng-model="newWill.executor.country" placeholder="RESIDENCY">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
+            </div>
+        </div>
+        <!-- END -->
+        <br>
+        <p class="note" ng-hide="newWill.age && newWill.firstName && newWill.familyName && newWill.country && newWill.nationality">*Please fill in all fields to continue.</p>
+    </div>
+    <div ng-show="step == 2" class="questionBox">
+        <div class="inlined" ng-init="spouse = false">
+            <div class="spouseHeading">
+                <h3>Partnerships</h3>
+                <p ng-show="spouse == false">I don't have any.</p>
+            </div>
+            <div class="spouseBody" ng-show="spouse">
+                <!-- <label>NAME</label> -->
+                <div>
+                    <input type="text" name="" ng-model="newWill.spouse.firstName" placeholder="Given Name">
+                    <span class="highlight"></span>
+                    <span class="bar" style="width: 150px"></span>
+                </div>
+                <div>
+                    <input type="text" name="" ng-model="newWill.spouse.familyName" placeholder="Family Name">
+                    <span class="highlight"></span>
+                    <span class="bar" style="width: 150px"></span>
+                </div>
+                <!-- <label>AGE</label> -->
+                <div class="spouseAge">
+                    <input type="number" ng-model="newWill.spouse.age" min="1" max="100" placeholder="AGE" required />
+                    <span class="highlight"></span>
+                    <span class="bar" style="width: 70px"></span>
+                </div>
+                <!-- <label>NATIONALITY</label> -->
+                <div>
+                    <input type="text" name="" ng-model="newWill.spouse.nationality" placeholder="NATIONALITY">
+                    <span class="highlight"></span>
+                    <span class="bar" style="width: 150px"></span>
+                </div>
+                <i class="material-icons removeChildBtn" ng-click="spouse = false">remove_circle</i>
+            </div>
+            <div class="addChildBtn" ng-click="spouse = true" ng-show="!spouse"><i class="material-icons">add_circle</i>Add Spouse</div>
+        </div>
+    </div>
+    <!-- CHILDREN -->
+    <div ng-show="step == 3" class="questionBox">
+        <div class="inlined">
+            <h3>Children and Dependencies</h3>
+            <div ng-repeat="child in newWill.children track by $index" class="childItem" ng-init="child.age = ''">
+                <!-- <label>NAME</label> -->
+                <div>
+                    <input type="text" name="" ng-model="child.name" placeholder="NAME">
+                    <span class="highlight"></span>
+                    <span class="bar" style="width: 150px"></span>
+                </div>
+                <!-- <label>AGE</label> -->
+                <div class="childAge">
+                    <input type="number" ng-model="child.age" min="1" max="100" placeholder="AGE" required />
+                    <span class="highlight"></span>
+                    <span class="bar" style="width: 70px"></span>
+                </div>
+                <div class="childUnderage">
+                    <i class="material-icons childInfo" ng-show="child.age < 18" ng-click="showWarning('ua'+$index)">live_help</i>
+                    <div class="underage" id="ua{{$index}}">
+                        <h4>Child under 18?</h4>
+                        <p>Tight pants next level keffiyeh you probably haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american appare. For more info, click <a href="#">here</a>.</p>
+                        <a href="#"></a>
+                    </div>
+                </div>
+                <!-- <label>NATIONALITY</label> -->
+                <div>
+                    <input type="text" name="" ng-model="child.nationality" placeholder="NATIONALITY">
+                    <span class="highlight"></span>
+                    <span class="bar" style="width: 150px"></span>
+                </div>
+                <i class="material-icons removeChildBtn" ng-click="removeChild($index)">remove_circle</i>
+            </div>
+            <div class="addChildBtn" ng-click="addChild()"><i class="material-icons">add_circle</i>Add Child</div>
+        </div>
+    </div>
+    <!-- SHOW INFO -->
+    <div class="showInfo questionBox" ng-show="step == 'check'">
+        <h3>Online Will</h3>
+        <p>Please check all information below and then click 'MAKE WILL'.</p>
+        <h4>General:</h4>
+        <div class="editorHolder step1" ng-init="edit1 = false">
+            <div class="group">
+                <p ng-show="!edit1">First Name: {{newWill.firstName}}</p>
+                <input type="text" ng-model="newWill.firstName" placeholder="{{newWill.firstName}}" ng-show="edit1">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p ng-show="!edit1">Family Name: {{newWill.familyName}}</p>
+                <input type="text" ng-model="newWill.familyName" placeholder="{{newWill.familyName}}" ng-show="edit1">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p ng-show="!edit1">Age: {{newWill.age}}</p>
+                <input type="number" ng-model="newWill.age" placeholder="{{newWill.age}}" ng-show="edit1">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p ng-show="!edit1">Residency: {{newWill.country}}</p>
+                <input type="text" ng-model="newWill.country" placeholder="{{newWill.country}}" ng-show="edit1">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p ng-show="!edit1">Nationality: {{newWill.nationality}}</p>
+                <input type="text" ng-model="newWill.nationality" placeholder="{{newWill.nationality}}" ng-show="edit1">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <button ng-click="edit1 = true" ng-show="!edit1">Edit</button>
+            <button ng-click="edit1 = false" ng-show="edit1">Save</button>
+        </div>
+        <h4>Executor:</h4>
+        <div class="editorHolder step1" ng-init="edit4 = false">
+            <div class="group">
+                <p ng-show="!edit5">First Name: {{newWill.executor.firstName}}</p>
+                <input type="text" ng-model="newWill.executor.firstName" placeholder="{{newWill.executor.firstName}}" ng-show="edit5">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p ng-show="!edit5">Family Name: {{newWill.executor.familyName}}</p>
+                <input type="text" ng-model="newWill.executor.familyName" placeholder="{{newWill.executor.familyName}}" ng-show="edit5">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p ng-show="!edit5">Age: {{newWill.executor.age}}</p>
+                <input type="number" ng-model="newWill.executor.age" placeholder="{{newWill.executor.age}}" ng-show="edit5">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p ng-show="!edit5">Residency: {{newWill.executor.country}}</p>
+                <input type="text" ng-model="newWill.executor.country" placeholder="{{newWill.executor.country}}" ng-show="edit5">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p ng-show="!edit5">Nationality: {{newWill.executor.nationality}}</p>
+                <input type="text" ng-model="newWill.executor.nationality" placeholder="{{newWill.executor.nationality}}" ng-show="edit5">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <button ng-click="edit5 = true" ng-show="!edit5">Edit</button>
+            <button ng-click="edit5 = false" ng-show="edit5">Save</button>
+        </div>
+        <h4>Partnership:</h4>
+        <div class="editorHolder step1" ng-init="edit1 = false">
+            <p ng-show="!newWill.spouse">No Partner or Spouse selected.</p>
+            <div class="group" ng-show="newWill.spouse">
+                <p ng-show="!edit2">First Name: {{newWill.spouse.firstName}}</p>
+                <input type="text" ng-model="newWill.spouse.firstName" placeholder="{{newWill.spouse.firstName}}" ng-show="edit2">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group" ng-show="newWill.spouse">
+                <p ng-show="!edit2">Family Name: {{newWill.spouse.familyName}}</p>
+                <input type="text" ng-model="newWill.spouse.familyName" placeholder="{{newWill.spouse.familyName}}" ng-show="edit2">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group" ng-show="newWill.spouse">
+                <p ng-show="!edit2">Age: {{newWill.spouse.age}}</p>
+                <input type="number" ng-model="newWill.spouse.age" placeholder="{{newWill.spouse.age}}" ng-show="edit2">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group" ng-show="newWill.spouse">
+                <p ng-show="!edit2">Nationality: {{newWill.spouse.nationality}}</p>
+                <input type="text" ng-model="newWill.spouse.nationality" placeholder="{{newWill.spouse.nationality}}" ng-show="edit2">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <button ng-click="edit2 = true" ng-show="!edit2 && newWill.spouse">Edit</button>
+            <button ng-click="edit2 = false" ng-show="edit2 && newWill.spouse">Save</button>
+        </div>
+        <h4>Children:</h4>
+        <div class="editorHolder step1" ng-init="edit3 = false">
+            <p ng-show="newWill.children.length == 0">No children.</p>
+            <div ng-repeat="child in newWill.children track by $index" class="childHolder">
+                <div class="group">
+                    <p ng-show="!edit3">Name: {{child.name}}</p>
+                    <input type="text" ng-model="child.name" placeholder="{{child.name}}" ng-show="edit3">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="group">
+                    <p ng-show="!edit3">Age: {{child.age}}</p>
+                    <input type="number" ng-model="child.age" placeholder="{{child.age}}" ng-show="edit3">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="group">
+                    <p ng-show="!edit3">Nationality: {{child.nationality}}</p>
+                    <input type="text" ng-model="child.nationality" placeholder="{{child.nationality}}" ng-show="edit3">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+            <button ng-click="edit3 = true" ng-show="!edit3 && newWill.spouse">Edit</button>
+            <button ng-click="edit3 = false" ng-show="edit3 && newWill.spouse">Save</button>
+        </div>
+        <div class="finalInfo">
+            <p>Fill in your email address if you want to be sent this informaiton.</p>
+            <input type="email" name="" placeholder="something@example.com" ng-model="newWill.email">
+            <p>*optional.</p>
         </div>
     </div>
 </div>
@@ -110,16 +290,16 @@
     <!-- PROGRESS BUTTONS -->
     <!-- STEP 1 -->
     <!-- ng-show="step == 1 && newWill.name && newWill.residency && newWill.nationality" ng-click="step = 2; progress = progress + 25" -->
-    <button ng-show="step == 1" ng-click="step = 2">GO TO STEP {{step+1}} </button>
+    <button ng-show="step == 1 && newWill.firstName && newWill.familyName && newWill.country && newWill.nationality" ng-click="step = 2">GO TO STEP {{step+1}} </button>
     <!-- STEP 2 -->
-    <button ng-show="step == 2" ng-click="step = 1">Previous</button>
+    <button ng-show="step == 2" ng-click="step = 1">PREVIOUS</button>
     <button ng-show="step == 2" ng-click="step = 3"> GO TO STEP {{step+1}} </button>
     <!-- STEP 3 -->
-    <button ng-show="step == 3" ng-click="step = 2">Previous</button>
-    <button ng-show="step == 3" ng-click="step = 4"> GO TO STEP {{step+1}} </button>
+    <button ng-show="step == 3" ng-click="step = 2">PREVIOUS</button>
+    <button ng-show="step == 3" ng-click="step = 'check'">CHECK INFO</button>
     <!-- STEP 4 -->
-    <button ng-show="step == 4" ng-click="step = 3">Previous</button>
-    <button ng-show="step == 4" ng-click="step = 5"> GO TO STEP {{step+1}} </button>
+    <!-- <button ng-show="step == 4" ng-click="step = 3">PREVIOUS</button> -->
+    <!-- <button ng-show="step == 4" ng-click="step = 5"> GO TO STEP {{step+1}} </button> -->
     <!-- STEP 5 -->
-    <button ng-show="step == 5" ng-click="step = 4">Previous</button>
+    <button ng-click="makeWill(newWill, user)" ng-show="step == 'check'">MAKE WILL</button>
 </div>

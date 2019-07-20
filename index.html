@@ -5,26 +5,65 @@
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- ICONS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/alertify.min.css">
+    <link rel="stylesheet" type="text/css" href="css/default.min.css">
+    <link rel="stylesheet" type="text/css" href="css/toggle.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body class="container">
-        <div ng-view></div>
+    <div class="adminNavbar">
+        <a href="#!/home">Make Will</a>
+        <a href="#!/account">My Account</a>
+        <a href="#!/admin" ng-show="profile.admin == true">Admin</a>
+        <button id="googleLogin" ng-show="!user">Login with Google</button>
+        <button ng-click="logout()" ng-show="user">Logout</button>
+    </div>
+    <div class="userBar" ng-show="user">
+        <p>Welcome, {{user.displayName}} <img src="{{user.photoURL}}" alt="{{user.displayName}}'s photo"></p>
+    </div>
+    <div ng-view></div>
+    <!-- FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-storage.js"></script>
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyANbwwqJ9oBdE4Eos-p-4Nyxp9AbXMVAZ4",
+        authDomain: "careysuenwills.firebaseapp.com",
+        databaseURL: "https://careysuenwills.firebaseio.com",
+        projectId: "careysuenwills",
+        storageBucket: "careysuenwills.appspot.com",
+        messagingSenderId: "532672159689",
+        appId: "1:532672159689:web:d0ce550d67d4e8d6"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 
-        <!-- SCRIPT -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min.js"></script>
-        <!-- ANGULAR FIRE -->
-        <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
-        <!-- AngularFire -->
-        <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
-
-        <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/mainCtrl.js"></script>
-        <script type="text/javascript" src="js/start.js"></script>
+    var db = firebase.firestore();
+    var database = firebase.database();
+    var user = firebase.auth().currentUser;
+    </script>
+    <!-- SCRIPT -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min.js"></script>
+    <!-- ANGULAR FIRE -->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <!-- ALERTJS -->
+    <script type="text/javascript" src="js/alertify.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/mainCtrl.js"></script>
+    <script type="text/javascript" src="js/start.js"></script>
     </div>
 </body>
 

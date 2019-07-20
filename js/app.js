@@ -11,8 +11,14 @@ app.config(function($routeProvider) {
         .when("/admin", {
             templateUrl: "admin.html",
         })
+        .when("/viewing", {
+            templateUrl: "viewing.html",
+        })
+        .when("/account", {
+            templateUrl: "account.html",
+        })
         .otherwise({
-            redirectTo: '/home'
+            redirectTo: '/account'
         });
 });
 

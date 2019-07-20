@@ -1,1 +1,25 @@
-<h1>{{trent}}</h1>
+<div class="container adminHolder willBox" ng-if="profile.admin == true">
+    <div>
+        <h2>Wills Database</h2>
+        <p>Find a will by searching for a first or family name.</p>
+        <div class="personalBody spouseBody">
+            <div>
+                <input type="text" name=""  ng-model="search" ng-init="search = ''" placeholder="SEARCH">
+                <span class="highlight"></span>
+                <span class="bar" style="width: 150px"></span>
+            </div>
+        </div>
+        <div class="willWrapper">
+            <div class="willItem" ng-repeat="will in wills" ng-hide="(will.firstName | lowercase).indexOf(search|lowercase) && (will.familyName | lowercase).indexOf(search|lowercase)">
+                <p>{{will.firstName}}</p>
+                <p>{{will.familyName}}</p>
+                <p>{{will.nationality}}</p>
+                <p>{{will.executor.firstName}}</p>
+                <div class="willIcons">
+                	<i class="material-icons" ng-click="view(will)">search</i>
+                	<i class="material-icons" ng-click="deleteWill(will)">delete</i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container adminHolder willBox" ng-if="chosenWill">
+    <button ng-click="printWill()">PRINT/SAVE WILL</button>
+    <div class="fullWill">
+        <img src="images/circleLogo.png" alt="carey suen logo">
+        <h2>CAREY SUEN WILLS:</h2>
+        <p>DATE: {{date}}</p>
+        <hr>
+        <div class="willWriteUp">
+            <p>I, <span>{{chosenWill.firstName}} {{chosenWill.familyName}}</span>, residing in <span>{{chosenWill.country}}</span>, any town, any state, declare this to be my Will, and I revoke any and all wills and codicils I previously made.</p>
+            <h3>ARTICLE I: Funeral expenses & payment of debt</h3>
+            <p>My executor to be named is <span>{{chosenWill.executor.firstName}} {{chosenWill.executor.familyName}}</span>.</p>
+            <p>I direct my executors to pay my enforceable unsecured debts and funeral expenses, the expenses of my last illness, and the expenses of administering my estate.</p>
+            <hr>
+            <h3>ARTICLE II: Money & Personal Property</h3>
+            <p ng-show="chosenWill.spouse.firstName">I give all my tangible personal property and all policies and proceeds of insurance covering such property, to my spouse, <span>{{chosenWill.spouse.firstName}} {{chosenWill.spouse.familyName}}</span>. If my spouse does not survive me, I give that property to those of my children who survive me, in equal shares, to be divided among them by my executors in their absolute discretion after consultation with my children. My executors may pay out of my estate the expenses of delivering tangible personal property to beneficiaries.</p>
+            <h4>My children named:</h4>
+            <div class="willChildBox">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Nationality</th>
+                    </tr>
+                    <tr ng-repeat="child in chosenWill.children">
+                        <td>{{child.name}}</td>
+                        <td>{{child.age}}</td>
+                        <td>{{child.nationality}}</td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div ng-show="chosenWill.children.length != 0">
+                <h3>ARTICLE VI: Minors</h3>
+                If under this will any property shall be payable outright to a person who is a minor, my executors may, without court approval, pay all or part of such property to a parent or guardian of that minor, to a custodian under the Uniform Transfers to Minors act, or may defer payment of such property until the minor reaches the age of majority, as defined by his or her state of residence. No bond shall be required for such payments.
+            </div>
+            <br>
+            <div>
+                <p>I, <span>{{chosenWill.firstName}} {{chosenWill.familyName}}</span> have signed this will on <span>{{date}}</span>.</p>
+                <br>
+                <p>__________________________________________</p>
+                <p>(legal signature)</p>
+                <br>
+                <p> SIGNED AND DECLARED by <span>{{chosenWill.firstName}} {{chosenWill.familyName}}</span> on <span>{{date}}</span> to be his/her will, in our presence, who at his/her request, in his/her presence and in the presence of each other, all being present at the same time, have signed our names as witnesses.</p>
+                <br>
+                <p>__________________________________________</p>
+                <p>(signature)</p>
+                <p>Blair Witness</p>
+                <p>__________________________________________</p>
+                <br>
+                <p>__________________________________________</p>
+                <p>Address</p>
+                <p>__________________________________________</p>
+                <p>(signature)</p>
+                <br>
+                <p>I. Witness</p>
+                <p>__________________________________________</p>
+                <br>
+                <p>__________________________________________</p>
+                <p>Address</p>
+            </div>
+            <img src="images/circleLogo.png" alt="carey suen logo">
+        </div>
+    </div>
+    <button ng-click="printWill()">PRINT/SAVE WILL</button>
+</div>
+<!-- NO CHOSEN WILL -->
+<div class='container adminHolder willBox' ng-if="!chosenWill">
+    <h2>Oops!</h2>
+    <p class="note">No Will has been selected, please fill in the online form and print off the form.</p>
+</div>
