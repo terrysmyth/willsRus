@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/terrysmyth/willsRus#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "heroku": "^7.26.2"
   }
 }
