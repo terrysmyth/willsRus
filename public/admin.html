@@ -4,22 +4,27 @@
         <p>Find a will by searching for a first or family name.</p>
         <div class="personalBody spouseBody">
             <div>
-                <input type="text" name=""  ng-model="search" ng-init="search = ''" placeholder="SEARCH">
+                <input type="text" name="" ng-model="search" ng-init="search = ''" placeholder="SEARCH">
                 <span class="highlight"></span>
                 <span class="bar" style="width: 150px"></span>
             </div>
         </div>
         <div class="willWrapper">
-            <div class="willItem" ng-repeat="will in wills" ng-hide="(will.firstName | lowercase).indexOf(search|lowercase) && (will.familyName | lowercase).indexOf(search|lowercase)">
-                <p>{{will.firstName}}</p>
-                <p>{{will.familyName}}</p>
-                <p>{{will.nationality}}</p>
-                <p>{{will.executor.firstName}}</p>
-                <div class="willIcons">
-                	<i class="material-icons" ng-click="view(will)">search</i>
-                	<i class="material-icons" ng-click="deleteWill(will)">delete</i>
-                </div>
-            </div>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Nationality</th>
+                    <th>Action</th>
+                </tr>
+                <tr ng-repeat="will in wills" ng-hide="(will.firstName | lowercase).indexOf(search|lowercase) && (will.familyName | lowercase).indexOf(search|lowercase)">
+                    <td>{{will.familyName}}, {{will.firstName}}</td>
+                    <td>{{will.nationality}}</td>
+                    <td class="willIcons">
+                        <i class="material-icons" ng-click="view(will)">search</i>
+                        <i class="material-icons" ng-click="deleteWill(will)">delete</i>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

@@ -1,10 +1,10 @@
-
-<div class="noProfile" ng-show="!user">
-    <h3>No Profile?</h3>
-    <p>Sign in with google, no passwords required!</p>
-    <p>Once you have an account you can access your details and will to print off at your leisure.</p>
+<div class="container willBox">
+    <div class="noProfile" ng-show="!user">
+        <h3>No Profile?</h3>
+        <p>Sign in with google, no passwords required!</p>
+        <p>Once you have an account you can access your details and will to print off at your leisure.</p>
+    </div>
 </div>
-
 <div class="container accountBox" ng-show="profile">
     <div class="accountInfo" ng-show="user != null && (!profile.name && !profile.email || !profile.phone || !profile.gmail)">
         <h3>Account Details:</h3>
@@ -45,7 +45,6 @@
         <h2>No Will Yet?</h2>
         <a href="#!/home"><button>Make Will</button></a>
     </div>
-
     <div class="willSummary" ng-repeat="will in wills" ng-if="will.key == user.uid">
         <div ng-init="profile.will = will"></div>
         <h4>General:</h4>

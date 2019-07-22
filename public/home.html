@@ -4,7 +4,7 @@
         <h2>No Will Yet?</h2>
         <p>Click on the button below to start the process of creating your own will! If you are logged in the document will persist, allowing you to come back and access the will any time.</p>
         <button ng-click="step = 1">Make Will</button>
-        <p ng-show="profile.will">It seems like you have a Will already, which is fine! However if you make another one it will overwrite your previous one.</p>
+        <p ng-show="profile.will" class="profileWill">It seems like you have a Will already, which is fine! However if you make another one it will overwrite your previous one.</p>
     </div>
     <div class="willHeading" ng-show="step != 0;">
         <h4>Please fill in the options below to the best of your ability.</h4>

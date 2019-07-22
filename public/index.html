@@ -15,11 +15,11 @@
 
 <body class="container">
     <div class="adminNavbar">
-        <a href="#!/home">Make Will</a>
-        <a href="#!/account">My Account</a>
-        <a href="#!/admin" ng-show="profile.admin == true">Admin</a>
-        <button id="googleLogin" ng-show="!user">Login with Google</button>
-        <button ng-click="logout()" ng-show="user">Logout</button>
+        <a href="#!/home"><button>Make Will</button></a>
+        <a href="#!/account"><button>My Account</button></a>
+        <a href="#!/admin" ng-show="profile.admin == true"><button>Admin</button></a>
+        <button id="googleLogin" ng-show="!user" class="googleBtn">Login with Google</button>
+        <button ng-click="logout()" ng-show="user" class="googleBtn">Logout</button>
     </div>
     <div class="userBar" ng-show="user">
         <p>Welcome, {{user.displayName}} <img src="{{user.photoURL}}" alt="{{user.displayName}}'s photo"></p>

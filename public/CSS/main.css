@@ -2,24 +2,37 @@
     transition-duration: 0.3s;
 }
 
+a:focus, button:focus, button:active {
+    outline: none;
+}
+
 .adminNavbar {
-    background-color: #0F52BA;
     padding: 5px 10px;
     color: #fff;
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flex;
 }
 
 .adminNavbar a {
     color: #fff;
-    padding: 5px 10px;
-    margin: 0 15px;
 }
 
-.adminNavbar button  {
-    padding: 0px 10px;
+.adminNavbar button {
+    padding: 20px;
     border: 0;
-    background-color: #cf0e18;
+    background-color: #585858;
     color: #fff;
-    margin: 0 10px;
+    margin: 2px;
+    height: 80px;
+}
+
+.adminNavbar button:hover {
+    transform: scale(1.05);
+}
+
+.adminNavbar .googleBtn {
+    background-color: #cf0e18;
 }
 
 
@@ -146,7 +159,7 @@ label {
 }
 
 .getWill {
-    padding: 20px 10px;
+    padding: 20px;
     background-color: #cf0e18;
     color: #fff;
     margin: 10px 0;
@@ -154,7 +167,7 @@ label {
 
 .getWill button {
     background-color: #fff !important;
-    color: #cf0e18 !important;
+    color: #585858 !important;
 }
 
 .getWill button {
@@ -289,6 +302,13 @@ label span {
     padding: 20px 10px;
     color: #fff;
     text-align: center;
+}
+
+.profileWill  {
+    background-color: #f5f5f5;
+    color: #585858;
+    padding: 20px;
+    margin: 20px 0;
 }
 
 .finalInfo {
@@ -539,6 +559,22 @@ input:focus~.highlight {
     margin: 10px 0;
 }
 
+.willWrapper table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.willWrapper td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.willWrapper tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 .willWrapper p {
     margin: 0;
     color: #fff;
@@ -557,16 +593,17 @@ input:focus~.highlight {
     background-color: rgba(207,14,24,0.7);
 }
 
-.willItem i {
+.willIcons i {
     color: #fff;
     cursor: pointer;
     border-radius: 50%;
     font-size: 19px;
     padding: 3px;
     margin: 0 5px;
+    background-color: #585858;
 }
 
-.willItem i:hover {
+.willIcons i:hover {
     background-color: #fff;
     color: #717171;
 }
