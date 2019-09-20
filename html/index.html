@@ -2,10 +2,32 @@
 <html lang="en" ng-app="myApp" ng-controller="mainCtrl">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carey Suen Ltd | Online Will: Generate your customised Will now.</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- ICONS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/CSS/mobiriseicons.css">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/CSS/alertify.min.css">
     <link rel="stylesheet" type="text/css" href="/CSS/default.min.css">
@@ -96,6 +118,63 @@
         </div>
         <div ng-view></div>
     </div>
+    <!-- FOOTER -->
+    <footer class="bg-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="text-white">
+                        <h3 class="mb-4 footer-list-title f-17 text-white">CAREY SUEN WILL SERVICES LTD</h3>
+                        <ul class="footer-icons list-inline mb-4">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/thefamilyestateplanner/" class=""><i class="mdi mdi-facebook"></i></a></li>
+                            <!-- <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-google"></i></a></li> -->
+                        </ul>
+                        <p class="copyright mt-3">2019 © Carey Suen. All Rights Reserved</p>
+                        <p><b>Phone: </b><a href="tel:+85291607855">+85291607855</a></p>
+                        <p><b>Email: </b><a href="mailto:info@careysuen.com">info@careysuen.com</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div>
+                                <p class="text-white mb-4 footer-list-title f-17">Company</p>
+                                <ul class="list-unstyled footer-list-menu">
+                                    <li><a href="https://careysuen.com/">Home</a></li>
+                                    <li><a href="https://careysuen.com/services">Services</a></li>
+                                    <li><a href="https://careysuen.com/free-consultation">Free Consultation</a></li>
+                                    <li><a href="https://careysuen.com/our-process">Our Process</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>
+                                <p class="text-white mb-4 footer-list-title f-17">Help</p>
+                                <ul class="list-unstyled footer-list-menu">
+                                    <li><a href="https://careysuen.com/all-articles">For your reading</a></li>
+                                    <li><a href="https://careysuen.com/useful-links">Useful Links</a></li>
+                                    <li><a href="#contact">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>
+                                <p class="text-white mb-4 footer-list-title f-17">Society of Will Writers</p>
+                                <ul class="list-unstyled footer-list-menu">
+                                    <li>
+                                        <a href="https://www.willwriters.com/" target="_blank">
+                                            <img src="https://careysuen.com/images/Will_Writers_Logo.png" alt="Society of Will Writers Logo" class="swwLogo">
+                                        </a>
+                                    </li>
+                                    <li><a href="https://www.willwriters.com/" target="_blank">Membership Number: <br>HO66050812/12</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- FIREBASE -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -131,7 +210,7 @@
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <!-- ALERTJS -->
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/JS/alertify.min.js"></script>
